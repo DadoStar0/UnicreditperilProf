@@ -19,7 +19,13 @@
     <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <style>
+        html,
+        body,
+        iframe {
+            height: 100%;
+        }
+    </style>
 
 
 </head>
@@ -27,7 +33,7 @@
 <body>
     <!--Header-->
     <!--Header-->
-    <header class="p-2 border-bottom contaner-fluid bg-danger">
+    <header class="p-2 border-bottom contaner bg-danger">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
@@ -90,7 +96,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="assistenza.html">Assistenza</a>
-                    </li>
+                    </li>  
                     <li class="nav-item">
                         <a class="nav-link" href="promozioni.html">Promozioni</a>
                     </li>
@@ -101,38 +107,24 @@
             </div>
         </div>
     </nav>
+    <main align="center">
 
-    <h3 align="center">Le tue carte:</h3>
-    <h2>togliere pk idea di rizzi </h2>
-    <table border="1" class="table" id="tabellaCarte">
-        <tr border="1" id="Carta1">
-        <td border="1"><h3 id="nCarta">Carta 1</h3></td>
-        <td align="center" border="1"><img src="./immagini/clercard.jpg" width="30%" ></img></td>
-        <td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>
-        </tr>
-    </table>
-
-    <script>
-        let counterCarte = 1;
-        function aggiungiCarta() {
-            counterCarte++;
-            let tabella = document.getElementById('tabellaCarte');
-            tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' +
-                '<td border="1"><h3 id="nCarta">Carta ' + counterCarte + '</h3></td>' +
-                '<td align="center" border="1"><img src="./immagini/clercard.jpg" width="30%" ></img></td>' +
-                '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
-                '</tr>';
-        }
-
-        function rimuoviCarta() {
-            let carta = document.getElementById('Carta' + counterCarte);
-            counterCarte--;
-            carta.remove();
-        }
-    </script>
+            <font align="center" color="#00ff7f" size="30%">Azioni disponibili:</font><br/><br/>
+    
+           <table border="0" cellpadding="2%" cellspacing="5%" align="center" width="100%">
+                <tr>
+                    <td width="33.3%"><a href="#"><img src="./immagini/ferrari.png"></a></td>
+                    <td width="33.3%"><a href="#"><img src="./immagini/unicredit.png"></a></td>
+                    <td width="33.3%"><a href="#"><img src="./immagini/cisco.png"></a></td>
+                </tr><tr>
+                    <td width="33.3%"><a href="#"><img src="./immagini/moncler.png"></a></td>
+                    <td width="33.3%"><a href="#"><img src="./immagini/enel.png"></a></td>
+                    <td width="33.3%"><a href="#"><img src="./immagini/apple.png"></a></td>
+                </tr>
+           </table>
+</main>
 
 
-    <a class="btn btn-success btn-l m-2" align="center" href="#" onclick="aggiungiCarta()">aggiungi carta</a>
     <!--Bootstrap Script-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
