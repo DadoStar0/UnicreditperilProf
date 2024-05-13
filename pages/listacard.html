@@ -82,9 +82,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="card.html">La tua card</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="infocard.html">Informazioni carta</a>
-                    </li>
+                
                     <li class="nav-item">
                         <a class="nav-link" href="listacard.html">Le tue carte</a>
                     </li>
@@ -107,7 +105,7 @@
     <table border="1" class="table" id="tabellaCarte">
         <tr border="1" id="Carta1">
         <td border="1"><h3 id="nCarta">Carta 1</h3></td>
-        <td align="center" border="1"><img src="./immagini/clercard.jpg" width="30%" ></img></td>
+        <td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>
         <td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>
         </tr>
     </table>
@@ -119,7 +117,7 @@
             let tabella = document.getElementById('tabellaCarte');
             tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' +
                 '<td border="1"><h3 id="nCarta">Carta ' + counterCarte + '</h3></td>' +
-                '<td align="center" border="1"><img src="./immagini/clercard.jpg" width="30%" ></img></td>' +
+                '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
                 '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
                 '</tr>';
         }
