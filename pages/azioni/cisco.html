@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<!--Per maggiori informazioni vedi index.html, non mi va di commentare tutto :)-->
+
+<head>
+    <!--Metadati-->
+    <meta charset="UTF-8">
+    <meta name='description' content='Sito Web per StartupYourLife'>
+    <meta name='language' content='IT'>
+    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'>
+    <!--Autori della pagina-->
+    <!--Titolo pagina-->
+    <title>S.A.R.A.</title>
+    <!---->
+    <link rel="icon" type="image/x-icon" href="./immagini/logounicredit.png">
+    <!--Icone di bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!--Stile pagina-->
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        html,
+        body,
+        iframe {
+            height: 100%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!--Header-->
+    <!--Header-->
+    <header class="p-2 border-bottom contaner bg-danger">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between">
+                <!--Logo app-->
+                <a href="Dashboard.html"
+                    class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <!--Icona in alto a sinistra che riporta alla dashboard-->
+                    <i class="bi bi-house-door-fill"></i>
+
+                </a>
+                <!--Titolo-->
+                <h4 class="mb-0">S.A.R.A.</h4>
+                <a href="infoProfilo.html" class="d-block link-body-emphasis text-decoration-none"
+                    aria-expanded="false">
+                    <i class="bi bi-person-circle" style="font-size:1.5em"></i> <!--iCONA DEL PROFILO-->
+                </a>
+
+            </div>
+        </div>
+    </header>
+    <img src="./immagini/unicreditbackground.png" class="rounded mx-auto d-block" width="150px">
+
+
+
+    <!--Barra di navigazione-->
+    <nav class="navbar navbar-expand-md bg-body-tertiary rounded">
+        <!--elemento nav di html che gestisce le navbar-->
+        <div class="container-fluid">
+            <!--Container fluido grande quanto tutta la pagina-->
+            <div class="navbar-collapse justify-content-center">
+                <!--UL e Li sono elementi di html per i menù a tendina, vengono gestiti da Bootstrap per le classi-->
+                <ul class="navbar-nav">
+                    <!--Gestione navbar attraverso classi nav e item-->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dashboard.html">Home</a> <!--Link alle pagine-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="operazioni.html">Operazioni</a> <!--Link alle pagine-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="conto.html">Conto </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statistiche.html">Statistiche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chisiamo.html">Chi siamo?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="appmobile.html">Scarica App </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="card.html">La tua card</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="listacard.html">Le tue carte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="assistenza.html">Assistenza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promozioni.html">Promozioni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="azioni.html">Azioni</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Azioni Comprate
+                    </th>
+                    <th scope="col">
+                        Azioni Disponibili
+                    </th>
+                    <th scope="col">
+                        Costo di un'azione
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row" id="azioniComprateId">
+                        0
+                    </td>
+                    <td id="azioniDisponibiliId">
+                        100
+                    </td>
+                    <td id="costoAzioneId">
+                        45 &euro;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex flex-row justify-content-center gap-3">
+            <button type="button" class="btn btn-outline-success" onclick="compraAzione()" id="compraAzioneBtn">Compra
+                azione</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="vendiAzione()" disabled id="vendiAzioneBtn">Vendi azione</button>
+        </div>
+
+    </main>
+
+    <script>
+        //inizializza valori
+        let azioniComprate = 0
+        let azioniDisponibili = 100
+        let costoAzione = 45
+        //funzione compra azione
+        function compraAzione() {
+            if (azioniDisponibili == 0) { //controllo su disponibilità azioni
+                alert("Nessuna azione disponibile!")
+                let bottone = document.getElementById('compraAzioneBtn') //cambio di colore del bottone
+                bottone.disabled = true //disabilita bottone
+                bottone.classList.remove("btn-outline-success")
+                bottone.classList.add("btn-outline-secondary")
+                return
+            } else {
+                let bottone = document.getElementById('compraAzioneBtn')
+                bottone.disabled = false
+                bottone.classList.remove("btn-outline-secondary")
+                bottone.classList.add("btn-outline-success")
+            }
+            if (azioniComprate == 0) { //controllo su bottone già disabilitato per vendere azioni
+                let bottone = document.getElementById('vendiAzioneBtn')
+                bottone.disabled = false
+                bottone.classList.add("btn-outline-danger")
+                bottone.classList.remove("btn-outline-secondary")
+            }
+            //aggiornamento valori
+            azioniDisponibili-- 
+            azioniComprate++
+            costoAzione += 10
+            //scrittura su pagina html
+            document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
+            document.getElementById('azioniComprateId').innerHTML = azioniComprate
+            document.getElementById('costoAzioneId').innerHTML = costoAzione + '&euro;'
+        }   
+        //funzione vendi azione
+        function vendiAzione() {
+            if (azioniComprate == 0) {
+                alert("Nessuna azione da vendere!")
+                let bottone = document.getElementById('vendiAzioneBtn')
+                bottone.disabled = true
+                bottone.classList.remove("btn-outline-danger")
+                bottone.classList.add("btn-outline-secondary")
+                return
+            } else {
+                let bottone = document.getElementById('vendiAzioneBtn')
+                bottone.disabled = false
+                bottone.classList.remove("btn-outline-secondary")
+                bottone.classList.add("btn-outline-danger")
+            }
+            azioniDisponibili++
+            azioniComprate--
+            costoAzione -= 10
+            document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
+            document.getElementById('azioniComprateId').innerHTML = azioniComprate
+            document.getElementById('costoAzioneId').innerHTML = costoAzione + '&euro;'
+        }
+    </script>
+
+
+    <!--Bootstrap Script-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

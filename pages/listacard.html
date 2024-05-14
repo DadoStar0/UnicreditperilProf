@@ -110,11 +110,11 @@
     </table>
 
     <script>
-        let counterCarte = 1;
+        let counterCarte = 1; //contatore delle carte
         function aggiungiCarta() {
-            counterCarte++;
+            counterCarte++; //incrementa contatore
             let tabella = document.getElementById('tabellaCarte');
-            tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' +
+            tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' + //aggiungi elemento nuova carta html
                 '<td border="1"><h3 id="nCarta">Carta ' + counterCarte + '</h3></td>' +
                 '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
                 '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
@@ -122,9 +122,9 @@
         }
 
         function rimuoviCarta() {
-            let carta = document.getElementById('Carta' + counterCarte);
-            counterCarte--;
-            carta.remove();
+            let carta = document.getElementById('Carta' + counterCarte); //prendi elemento carta da HTML
+            counterCarte--; //decrementa contatore
+            carta.remove(); //elimina carta da HTML
         }
     </script>
 

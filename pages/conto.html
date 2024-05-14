@@ -124,11 +124,11 @@
     </main>
 
     <script>
-        let contaConti = 1;
-        let contoSelezionato=1;
+        let contaConti = 1; //contatore per ogni conto
+        let contoSelezionato=1; //conto attualmente in uso
         function aggiungiConto() {
             contaConti++;
-            let soldi = prompt("Inserire disponibilità iniziale: ");
+            let soldi = prompt("Inserire disponibilità iniziale: "); //soldi presenti sul conto che si vuole aggiungere
             
             let conto = '<div class="border border-danger w-50 h-50 h2 align-self-center p-5" id="conto'+contaConti+'">' +
                 '<h3 class="m-2 text-center text-secondary" id="titoloConto'+contaConti+'">Conto '+ contaConti +' <span id="inUso'+contaConti+'">(In uso)</span>'+'</h3>' +
@@ -137,25 +137,25 @@
                 '<button class="btn btn-danger btn-xl p-3" id="'+contaConti+'" onclick="rimuoviConto(this.id);" href="#">Elimina conto</button>'+
                 '<button class="btn btn-primary btn-xl p-3" id="'+contaConti+'" onclick="selezionaConto(this.id);" href="#">Seleziona conto</button>'+
                 '</div>'+
-                '</div>';
-            document.getElementById('containerConti').innerHTML += conto
-            document.getElementById('inUso'+contaConti).style.display="none";
+                '</div>'; 
+            document.getElementById('containerConti').innerHTML += conto //aggiunta del conto alla pagina
+            document.getElementById('inUso'+contaConti).style.display="none"; //nuovo conto non in uso di default
         }
         function rimuoviConto(nConto) {
-            if(contoSelezionato==nConto) selezionaConto(1);
-            document.getElementById('conto'+nConto).remove();
-            contaConti--;
+            if(contoSelezionato==nConto) selezionaConto(1); //se il conto attualmente in uso viene selezionato allora si seleziona il conto 1
+            document.getElementById('conto'+nConto).remove(); //rimuovi il conto dalla pagina
+            contaConti--; //decremento contatore
         }
         function selezionaConto(nConto){
-            let selezionato = document.getElementById('titoloConto'+contoSelezionato);
-            let selezionare = document.getElementById('titoloConto'+nConto);
-            selezionato.classList.remove("text-primary");
+            let selezionato = document.getElementById('titoloConto'+contoSelezionato); //prende elemento html del conto selezionato
+            let selezionare = document.getElementById('titoloConto'+nConto);//prende elemento html del conto da selezionare
+            selezionato.classList.remove("text-primary"); //cambio colore del testo
             selezionato.classList.add("text-secondary");
-            document.getElementById('inUso'+contoSelezionato).style.display="none";
+            document.getElementById('inUso'+contoSelezionato).style.display="none"; //rimozione scritta "in uso"
             
-            selezionare.classList.remove("text-secondary");
+            selezionare.classList.remove("text-secondary"); //cambio colore del testo
             selezionare.classList.add("text-primary");
-            document.getElementById('inUso'+nConto).style.display="inline";
+            document.getElementById('inUso'+nConto).style.display="inline"; //aggiunta scritta "in uso"
             contoSelezionato=nConto;
         }
     </script>
