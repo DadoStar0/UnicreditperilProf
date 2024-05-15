@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name='description' content='Sito Web per StartupYourLife'>
     <meta name='language' content='IT'>
-    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'> <!--Autori della pagina-->
+    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'>
+    <!--Autori della pagina-->
     <!--Titolo pagina-->
     <title>S.A.R.A.</title>
     <!---->
@@ -22,17 +23,17 @@
 
 </head>
 
-<body>
+<body onload="aggiorna()">
     <!--Header-->
     <!--Header-->
     <header class="p-2 border-bottom contaner bg-danger">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
-                <a href="Dashboard.html"
+                <a href="../index.html"
                     class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                     <!--Icona in alto a sinistra che riporta alla dashboard-->
-                    <i class="bi bi-house-door-fill"></i>
+                    <i class="bi bi-door-open"></i>
 
                 </a>
                 <!--Titolo-->
@@ -80,7 +81,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="card.html">La tua card</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="listacard.html">Le tue carte</a>
                     </li>
@@ -103,14 +104,6 @@
     <main class="d-flex flex-column gap-2">
         <h1 class="text-danger mt-2 align-self-center display-1">Conto Bancario</h1>
         <div class="container-fluid d-flex flex-column justify-content-center" id="containerConti">
-            <div class="border border-danger w-50 h-50 h2 align-self-center p-5" id="conto1">
-                <h3 class="m-2 text-center text-primary"id="titoloConto1">Conto 1 <span id="inUso1">(In uso)</span></h3>
-                <p class="m-2 text-center">€1004,00</p>
-                <div class="d-flex flex-row justify-content-center p-2 gap-4">
-                    <button class="btn btn-primary btn-xl p-3" id=1 onclick="selezionaConto(1);" href="#">Seleziona conto</button>
-                </div>
-
-            </div>
 
         </div>
 
@@ -123,42 +116,7 @@
 
     </main>
 
-    <script>
-        let contaConti = 1; //contatore per ogni conto
-        let contoSelezionato=1; //conto attualmente in uso
-        function aggiungiConto() {
-            contaConti++;
-            let soldi = prompt("Inserire disponibilità iniziale: "); //soldi presenti sul conto che si vuole aggiungere
-            
-            let conto = '<div class="border border-danger w-50 h-50 h2 align-self-center p-5" id="conto'+contaConti+'">' +
-                '<h3 class="m-2 text-center text-secondary" id="titoloConto'+contaConti+'">Conto '+ contaConti +' <span id="inUso'+contaConti+'">(In uso)</span>'+'</h3>' +
-                '<p class="m-2 text-center">€' + soldi + ',00</p>' +
-                '<div class="d-flex flex-row justify-content-center p-2 gap-4">'+
-                '<button class="btn btn-danger btn-xl p-3" id="'+contaConti+'" onclick="rimuoviConto(this.id);" href="#">Elimina conto</button>'+
-                '<button class="btn btn-primary btn-xl p-3" id="'+contaConti+'" onclick="selezionaConto(this.id);" href="#">Seleziona conto</button>'+
-                '</div>'+
-                '</div>'; 
-            document.getElementById('containerConti').innerHTML += conto //aggiunta del conto alla pagina
-            document.getElementById('inUso'+contaConti).style.display="none"; //nuovo conto non in uso di default
-        }
-        function rimuoviConto(nConto) {
-            if(contoSelezionato==nConto) selezionaConto(1); //se il conto attualmente in uso viene selezionato allora si seleziona il conto 1
-            document.getElementById('conto'+nConto).remove(); //rimuovi il conto dalla pagina
-            contaConti--; //decremento contatore
-        }
-        function selezionaConto(nConto){
-            let selezionato = document.getElementById('titoloConto'+contoSelezionato); //prende elemento html del conto selezionato
-            let selezionare = document.getElementById('titoloConto'+nConto);//prende elemento html del conto da selezionare
-            selezionato.classList.remove("text-primary"); //cambio colore del testo
-            selezionato.classList.add("text-secondary");
-            document.getElementById('inUso'+contoSelezionato).style.display="none"; //rimozione scritta "in uso"
-            
-            selezionare.classList.remove("text-secondary"); //cambio colore del testo
-            selezionare.classList.add("text-primary");
-            document.getElementById('inUso'+nConto).style.display="inline"; //aggiunta scritta "in uso"
-            contoSelezionato=nConto;
-        }
-    </script>
+    <script src="memorizzaConti.js"></script>
 
     <!--Bootstrap Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

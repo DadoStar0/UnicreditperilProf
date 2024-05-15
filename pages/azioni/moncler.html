@@ -33,20 +33,19 @@
 
 <body>
     <!--Header-->
-    <!--Header-->
     <header class="p-2 border-bottom contaner bg-danger">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
-                <a href="Dashboard.html"
+                <a href=".../index.html"
                     class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                     <!--Icona in alto a sinistra che riporta alla dashboard-->
-                    <i class="bi bi-house-door-fill"></i>
+                    <i class="bi bi-door-open"></i>
 
                 </a>
                 <!--Titolo-->
                 <h4 class="mb-0">S.A.R.A.</h4>
-                <a href="infoProfilo.html" class="d-block link-body-emphasis text-decoration-none"
+                <a href="../infoProfilo.html" class="d-block link-body-emphasis text-decoration-none"
                     aria-expanded="false">
                     <i class="bi bi-person-circle" style="font-size:1.5em"></i> <!--iCONA DEL PROFILO-->
                 </a>
@@ -54,7 +53,7 @@
             </div>
         </div>
     </header>
-    <img src="./immagini/unicreditbackground.png" class="rounded mx-auto d-block" width="150px">
+    <img src="../immagini/unicreditbackground.png" class="rounded mx-auto d-block" width="150px">
 
 
 
@@ -69,38 +68,37 @@
                     <!--Gestione navbar attraverso classi nav e item-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="Dashboard.html">Home</a> <!--Link alle pagine-->
+                        <a class="nav-link" href="../Dashboard.html">Home</a> <!--Link alle pagine-->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="operazioni.html">Operazioni</a> <!--Link alle pagine-->
+                        <a class="nav-link" href="../operazioni.html">Operazioni</a> <!--Link alle pagine-->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="conto.html">Conto </a>
+                        <a class="nav-link" href="../conto.html">Conto </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="statistiche.html">Statistiche</a>
+                        <a class="nav-link" href="../statistiche.html">Statistiche</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="chisiamo.html">Chi siamo?</a>
+                        <a class="nav-link" href="../chisiamo.html">Chi siamo?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="appmobile.html">Scarica App </a>
+                        <a class="nav-link" href="../appmobile.html">Scarica App </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="card.html">La tua card</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="listacard.html">Le tue carte</a>
+                        <a class="nav-link" href="../card.html">La tua card</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="assistenza.html">Assistenza</a>
+                        <a class="nav-link" href="../listacard.html">Le tue carte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="promozioni.html">Promozioni</a>
+                        <a class="nav-link" href="../assistenza.html">Assistenza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="azioni.html">Azioni</a>
+                        <a class="nav-link" href="../promozioni.html">Promozioni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../azioni.html">Azioni</a>
                     </li>
                 </ul>
             </div>
@@ -129,8 +127,8 @@
                     <td id="azioniDisponibiliId">
                         100
                     </td>
-                    <td id="costoAzioneId">
-                        63 &euro;
+                    <td>
+                        <span id="costoAzioneId" >63</span> &euro;
                     </td>
                 </tr>
             </tbody>
@@ -144,64 +142,7 @@
 
     </main>
 
-    <script>
-        //inizializza valori
-        let azioniComprate = 0
-        let azioniDisponibili = 100
-        let costoAzione = 63
-        //funzione compra azione
-        function compraAzione() {
-            if (azioniDisponibili == 0) { //controllo su disponibilità azioni
-                alert("Nessuna azione disponibile!")
-                let bottone = document.getElementById('compraAzioneBtn') //cambio di colore del bottone
-                bottone.disabled = true //disabilita bottone
-                bottone.classList.remove("btn-outline-success")
-                bottone.classList.add("btn-outline-secondary")
-                return
-            } else {
-                let bottone = document.getElementById('compraAzioneBtn')
-                bottone.disabled = false
-                bottone.classList.remove("btn-outline-secondary")
-                bottone.classList.add("btn-outline-success")
-            }
-            if (azioniComprate == 0) { //controllo su bottone già disabilitato per vendere azioni
-                let bottone = document.getElementById('vendiAzioneBtn')
-                bottone.disabled = false
-                bottone.classList.add("btn-outline-danger")
-                bottone.classList.remove("btn-outline-secondary")
-            }
-            //aggiornamento valori
-            azioniDisponibili-- 
-            azioniComprate++
-            costoAzione += 10
-            //scrittura su pagina html
-            document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
-            document.getElementById('azioniComprateId').innerHTML = azioniComprate
-            document.getElementById('costoAzioneId').innerHTML = costoAzione + '&euro;'
-        }   
-        //funzione vendi azione
-        function vendiAzione() {
-            if (azioniComprate == 0) {
-                alert("Nessuna azione da vendere!")
-                let bottone = document.getElementById('vendiAzioneBtn')
-                bottone.disabled = true
-                bottone.classList.remove("btn-outline-danger")
-                bottone.classList.add("btn-outline-secondary")
-                return
-            } else {
-                let bottone = document.getElementById('vendiAzioneBtn')
-                bottone.disabled = false
-                bottone.classList.remove("btn-outline-secondary")
-                bottone.classList.add("btn-outline-danger")
-            }
-            azioniDisponibili++
-            azioniComprate--
-            costoAzione -= 10
-            document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
-            document.getElementById('azioniComprateId').innerHTML = azioniComprate
-            document.getElementById('costoAzioneId').innerHTML = costoAzione + '&euro;'
-        }
-    </script>
+   
 
 
     <!--Bootstrap Script-->

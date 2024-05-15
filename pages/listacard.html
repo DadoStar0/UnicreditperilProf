@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name='description' content='Sito Web per StartupYourLife'>
     <meta name='language' content='IT'>
-    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'> <!--Autori della pagina-->
+    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'>
+    <!--Autori della pagina-->
     <!--Titolo pagina-->
     <title>S.A.R.A.</title>
     <!---->
@@ -24,17 +25,17 @@
 
 </head>
 
-<body>
+<body onload="aggiorna()">
     <!--Header-->
     <!--Header-->
     <header class="p-2 border-bottom contaner-fluid bg-danger">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
-                <a href="Dashboard.html"
+                <a href="../index.html"
                     class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                     <!--Icona in alto a sinistra che riporta alla dashboard-->
-                    <i class="bi bi-house-door-fill"></i>
+                    <i class="bi bi-door-open"></i>
 
                 </a>
                 <!--Titolo-->
@@ -82,7 +83,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="card.html">La tua card</a>
                     </li>
-                
+
                     <li class="nav-item">
                         <a class="nav-link" href="listacard.html">Le tue carte</a>
                     </li>
@@ -103,14 +104,28 @@
     <h3 align="center">Le tue carte:</h3>
     <table border="1" class="table" id="tabellaCarte">
         <tr border="1" id="Carta1">
-        <td border="1"><h3 id="nCarta">Carta 1</h3></td>
-        <td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>
-        <td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>
+            <td border="1">
+                <h3 id="nCarta">Carta 1</h3>
+            </td>
+            <td align="center" border="1"><img src="./immagini/Carta.png" width="30%"></img></td>
+            <td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina
+                    carta</a></td>
         </tr>
     </table>
 
     <script>
         let counterCarte = 1; //contatore delle carte
+        function aggiorna() {
+            counterCarte = parseInt(localStorage.getItem('nCarte'))
+            for (i = 2; i <= counterCarte; i++) {
+                let tabella = document.getElementById('tabellaCarte');
+                tabella.innerHTML += '<tr border="1" id="Carta' + i + '">' + //aggiungi elemento nuova carta html
+                    '<td border="1"><h3 id="nCarta">Carta ' + i + '</h3></td>' +
+                    '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
+                    '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
+                    '</tr>';
+            }
+        }
         function aggiungiCarta() {
             counterCarte++; //incrementa contatore
             let tabella = document.getElementById('tabellaCarte');
@@ -119,12 +134,14 @@
                 '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
                 '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
                 '</tr>';
+            localStorage.setItem('nCarte', counterCarte)
         }
 
         function rimuoviCarta() {
             let carta = document.getElementById('Carta' + counterCarte); //prendi elemento carta da HTML
             counterCarte--; //decrementa contatore
             carta.remove(); //elimina carta da HTML
+            localStorage.setItem('nCarte', counterCarte)
         }
     </script>
 
