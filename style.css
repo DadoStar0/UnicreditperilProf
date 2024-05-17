@@ -23,3 +23,8 @@ file per personalizzazioni future
 p{
     text-align:justify;
 }
+
+.articolo{
+    height: 50%;
+    font-size:2vw;
+}
