@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
    
     <style>
-        .swiper {
+        .swiper { /*rettangolo delle operazioni*/
             width: 55%;
             height: 500px;
         }
@@ -33,7 +33,6 @@
 </head>
 
 <body>
-    <!--Header-->
     <!--Header-->
     <header class="p-2 border-bottom contaner-fluid bg-danger">
         <div class="container">
@@ -111,7 +110,7 @@
         <!-- Slider main container -->
         <div class="swiper mt-4">
             <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper"> <!--contengo tutti gli swiper in uno blocco solo-->
                 <!-- Slides -->
                 <div class="swiper-slide">
                     <a href="./operazioni/bonifico.html"><button class="btn btn-light h-100 w-100"><h3>Bonifico</h3></button></a>
@@ -126,10 +125,10 @@
                     <a href="./operazioni/rubricaIban.html"><button class="btn btn-light h-100 w-100"><h3>Rubrica Iban</h3></button></a>
                 </div>
             </div>
-            <!-- If we need pagination -->
+            <!--puntini che indicano a che pag ti trovi-->
             <div class="swiper-pagination"></div>
 
-            <!-- If we need navigation buttons -->
+            <!-- freccette di navigazione -->
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
         </div>

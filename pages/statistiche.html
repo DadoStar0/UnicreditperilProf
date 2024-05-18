@@ -25,7 +25,6 @@
 
 <body>
     <!--Header-->
-    <!--Header-->
     <header class="p-2 border-bottom contaner-fluid bg-danger">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
@@ -98,14 +97,16 @@
         </div>
     </nav>
 
-    <main class="w-50 m-auto mt-5">
-        <form class="form-group">
+    <main class="w-50 mt-5">
+        <form class="form-group"><!--classe di boostrap per gestione del form data-->
             <label for="filtroData">Filtra per periodo: </label>
             <input type="month" name="filtroData" id="filtroDataId" min="2024-01" />
         </form>
-        <canvas class="my-4 w-100" id="myChart"
-            style="display: block; box-sizing: border-box; height: 200px; width: 1218px;"></canvas>
+        <canvas class="my-4 w-100" id="myChart" 
+            style="display: block; box-sizing: border-box; height: 200px; width: 1218px;"></canvas> 
+            <!--canvas tag proprietario della libreria chart, usato per creare un grafico con dei dati da javascript-->
         <h2>Bilancio</h2>
+        <!--Gestione tabella responsive (si adatta in base alle dimensioni dello schermo)-->
         <div class="table-responsive small">
             <table class="table table-striped table-sm">
                 <thead>
@@ -160,25 +161,24 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        /* globals Chart:false */
-        let data = new Date()
 
-        let anno = data.getFullYear().toString();
-        let mese = (data.getMonth() + 1).toString();
+//inizio java script
+// let è un tipo di variabile che è come dire tutti i tipi messsi assieme es let può dichiarare un char un int e un double contemporaneamente
+        let data = new Date() //prendi data di oggi
+        let anno = data.getFullYear().toString(); //prendi l'anno dalla data 
+        let mese = (data.getMonth() + 1).toString(); //prendi mese dalla data
         if (mese < 10) {
-            mese = '0' + mese;
+            mese = '0' + mese; //passa il numero in stringa ed aggiungi uno zero avanti ai mesi da una cifra
         }
-        filtroDataId.max = anno + '-' + mese;
-        console.log(filtroDataId.max);
+        filtroDataId.max = anno + '-' + mese; //setta la data massima da poter scegliere come quella attuale
 
-        (() => {
-            'use strict'
+        (() => { //funzione freccia: crea funzione
 
             // Codice per creare il grafico
-            const ctx = document.getElementById('myChart')
+            const ctx = document.getElementById('myChart') //crea grafico
 
-            const myChart = new Chart(ctx, { //oggetto di tipo chart
-                type: 'line',
+            const myChart = new Chart(ctx, { //oggetto di tipo chart, in una costante
+                type: 'line', //attributo del grafico
                 data: {
                     labels: [ //ascisse
                         'Gennaio',
@@ -195,6 +195,7 @@
                             900,
                             1400,
                         ],
+                        //stile
                         lineTension: 0,
                         backgroundColor: 'transparent',
                         borderColor: '#007bff',
@@ -205,10 +206,10 @@
                 //opzioni di stile
                 options: {
                     plugins: {
-                        legend: {
+                        legend: { //non mostrare la legenda
                             display: false
                         },
-                        tooltip: {
+                        tooltip: { //
                             boxPadding: 3
                         }
                     }

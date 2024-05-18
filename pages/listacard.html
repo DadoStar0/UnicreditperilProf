@@ -25,8 +25,7 @@
 
 </head>
 
-<body onload="aggiorna()">
-    <!--Header-->
+<body onload="aggiorna()"> <!--ogni volta che vioene caricata la pagina richiama la funzione aggiorna-->
     <!--Header-->
     <header class="p-2 border-bottom contaner-fluid bg-danger">
         <div class="container">
@@ -129,7 +128,7 @@
         function aggiungiCarta() {
             counterCarte++; //incrementa contatore
             let tabella = document.getElementById('tabellaCarte');
-            tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' + //aggiungi elemento nuova carta html
+            tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' + //aggiungi elemento nuova carta html += significa aggiungi stesso
                 '<td border="1"><h3 id="nCarta">Carta ' + counterCarte + '</h3></td>' +
                 '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
                 '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
