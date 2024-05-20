@@ -12,7 +12,7 @@
     <!--Titolo pagina-->
     <title>S.A.R.A.</title>
     <!---->
-    <link rel="icon" type="image/x-icon" href="../immagini/logounicredit.png">
+    <link rel="icon" type="image/x-icon" href="./immagini/logounicredit.png">
     <!--Icone di bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -33,12 +33,11 @@
 
 <body onload="aggiorna()">
     <!--Header-->
-    <!--Header-->
-    <header class="p-2 border-bottom contane bg-primary">
+    <header class="p-2 border-bottom contaner bg-primary">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
-                <a href=".../index.html"
+                <a href="../../index.html"
                     class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                     <!--Icona in alto a sinistra che riporta alla dashboard-->
                     <i class="bi bi-door-open"></i>
@@ -105,7 +104,6 @@
             </div>
         </div>
     </nav>
-
     <main>
         <table class="table">
             <thead>
@@ -130,7 +128,7 @@
                         100
                     </td>
                     <td>
-                        <span id="costoAzioneId">172</span> &euro;
+                        <span id="costoAzioneId" >172</span> &euro;
                     </td>
                 </tr>
             </tbody>
@@ -139,26 +137,34 @@
         <div class="d-flex flex-row justify-content-center gap-3">
             <button type="button" class="btn btn-outline-success" onclick="compraAzione()" id="compraAzioneBtn">Compra
                 azione</button>
-            <button type="button" class="btn btn-outline-secondary" onclick="vendiAzione()" disabled
-                id="vendiAzioneBtn">Vendi azione</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="vendiAzione()" disabled id="vendiAzioneBtn">Vendi azione</button>
         </div>
 
     </main>
 
     <script>
-        let azioniComprate
-        let azioniDisponibili
-        let costoAzione
+        
+        let azioniComprate = localStorage.getItem('azioniComprate')
+        let azioniDisponibili = localStorage.getItem('azioniDisponibili')
+        let costoAzione = 172
 
         //inizializza valori
         function aggiorna() {
-            azioniComprate = 0
-            azioniDisponibili = 100
-            costoAzione = 172
+            document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
+            document.getElementById('azioniComprateId').innerHTML = azioniComprate
+            document.getElementById('costoAzioneId').innerHTML = costoAzione
+
         }
         
         //funzione compra azione
         function compraAzione() {
+            console.log(azioniComprate)
+            if (azioniComprate > 0) { //controllo su bottone già disabilitato per vendere azioni
+                let bottone = document.getElementById('vendiAzioneBtn')
+                bottone.disabled = false
+                bottone.classList.add("btn-outline-danger")
+                bottone.classList.remove("btn-outline-secondary")
+            }
             if (azioniDisponibili == 0) { //controllo su disponibilità azioni
                 alert("Nessuna azione disponibile!")
                 let bottone = document.getElementById('compraAzioneBtn') //cambio di colore del bottone
@@ -172,12 +178,7 @@
                 bottone.classList.remove("btn-outline-secondary")
                 bottone.classList.add("btn-outline-success")
             }
-            if (azioniComprate == 0) { //controllo su bottone già disabilitato per vendere azioni
-                let bottone = document.getElementById('vendiAzioneBtn')
-                bottone.disabled = false
-                bottone.classList.add("btn-outline-danger")
-                bottone.classList.remove("btn-outline-secondary")
-            }
+            
             let conto = localStorage.getItem('contoSelezionato')
             let saldo = localStorage.getItem('conto'+conto)
             if(costoAzione>saldo){
@@ -213,17 +214,25 @@
                 bottone.classList.remove("btn-outline-secondary")
                 bottone.classList.add("btn-outline-danger")
             }
+            
+            let conto = localStorage.getItem('contoSelezionato')
+            let saldo = parseInt(localStorage.getItem('conto'+conto))
+            
+            saldo += costoAzione
             azioniDisponibili++
             azioniComprate--
             costoAzione -= 10
             document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
             document.getElementById('azioniComprateId').innerHTML = azioniComprate
-            document.getElementById('costoAzioneId').innerHTML = costoAzione + '&euro;'
+            document.getElementById('costoAzioneId').innerHTML = costoAzione
             localStorage.setItem('azioniDisponibili', azioniDisponibili)
             localStorage.setItem('azioniComprate', azioniComprate)
             localStorage.setItem('costoAzione', costoAzione)
+            
+            localStorage.setItem('conto'+conto, saldo)
         }
     </script>
+
 
 
     <!--Bootstrap Script-->

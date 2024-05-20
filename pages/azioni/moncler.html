@@ -37,7 +37,7 @@
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
-                <a href=".../index.html"
+                <a href="../../index.html"
                     class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                     <!--Icona in alto a sinistra che riporta alla dashboard-->
                     <i class="bi bi-door-open"></i>
@@ -144,15 +144,12 @@
 
     <script>
         
-        let azioniComprate = 0
-        let azioniDisponibili = 0
-        let costoAzione = 45
+        let azioniComprate = localStorage.getItem('azioniComprate')
+        let azioniDisponibili = localStorage.getItem('azioniDisponibili')
+        let costoAzione = 63
 
         //inizializza valori
         function aggiorna() {
-            azioniComprate = parseInt(localStorage.getItem('azioniComprate'))
-            azioniDisponibili = parseInt(localStorage.getItem('azioniDisponibili'))
-            costoAzione = parseInt(localStorage.getItem('costoAzione'))
             document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
             document.getElementById('azioniComprateId').innerHTML = azioniComprate
             document.getElementById('costoAzioneId').innerHTML = costoAzione
@@ -161,6 +158,13 @@
         
         //funzione compra azione
         function compraAzione() {
+            console.log(azioniComprate)
+            if (azioniComprate > 0) { //controllo su bottone già disabilitato per vendere azioni
+                let bottone = document.getElementById('vendiAzioneBtn')
+                bottone.disabled = false
+                bottone.classList.add("btn-outline-danger")
+                bottone.classList.remove("btn-outline-secondary")
+            }
             if (azioniDisponibili == 0) { //controllo su disponibilità azioni
                 alert("Nessuna azione disponibile!")
                 let bottone = document.getElementById('compraAzioneBtn') //cambio di colore del bottone
@@ -174,12 +178,7 @@
                 bottone.classList.remove("btn-outline-secondary")
                 bottone.classList.add("btn-outline-success")
             }
-            if (azioniComprate == 0) { //controllo su bottone già disabilitato per vendere azioni
-                let bottone = document.getElementById('vendiAzioneBtn')
-                bottone.disabled = false
-                bottone.classList.add("btn-outline-danger")
-                bottone.classList.remove("btn-outline-secondary")
-            }
+            
             let conto = localStorage.getItem('contoSelezionato')
             let saldo = localStorage.getItem('conto'+conto)
             if(costoAzione>saldo){
@@ -215,17 +214,25 @@
                 bottone.classList.remove("btn-outline-secondary")
                 bottone.classList.add("btn-outline-danger")
             }
+            
+            let conto = localStorage.getItem('contoSelezionato')
+            let saldo = parseInt(localStorage.getItem('conto'+conto))
+            
+            saldo += costoAzione
             azioniDisponibili++
             azioniComprate--
             costoAzione -= 10
             document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
             document.getElementById('azioniComprateId').innerHTML = azioniComprate
-            document.getElementById('costoAzioneId').innerHTML = costoAzione + '&euro;'
+            document.getElementById('costoAzioneId').innerHTML = costoAzione
             localStorage.setItem('azioniDisponibili', azioniDisponibili)
             localStorage.setItem('azioniComprate', azioniComprate)
             localStorage.setItem('costoAzione', costoAzione)
+            
+            localStorage.setItem('conto'+conto, saldo)
         }
     </script>
+
 
 
     <!--Bootstrap Script-->
