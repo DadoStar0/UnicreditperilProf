@@ -6,11 +6,13 @@
     <meta charset="UTF-8"> <!--Codifica Unicode per pagine Web-->
     <meta name='description' content='Sito Web per StartupYourLife'> <!--Descrizione del sito-->
     <meta name='language' content='IT'> <!--Linguaggio della pagina-->
-    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'> <!--Autori della pagina-->
+    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'>
+    <!--Autori della pagina-->
     <title>S.A.R.A.</title> <!--Titolo pagina-->
     <link rel="icon" type="image/x-icon" href="./pages/immagini/logounicredit.png"> <!--Icona in alto-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> <!--Icone di bootstrap preimpostate e prese dal sito Bootstrap-->
-   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Icone di bootstrap preimpostate e prese dal sito Bootstrap-->
+
     <link rel="stylesheet" href="./style.css"> <!--Richiamo al file stile di pagina-->
 </head>
 
@@ -25,7 +27,8 @@
                 Flex in colonna per gestire ogni elemento con la sua singola riga
             -->
             <h1 class="display-1 mb-1">S.A.R.A.</h1> <!--Titolo con grandezza 1 e margine sottostante (margin-bottom)-->
-            <h3 class="display-5 mb-5">Servizi Avanzati di Risparmio e Assistenza</h3> <!--Sottotitolo con grandezza 5 e margine sottostante (margin-bottom)-->
+            <h3 class="display-5 mb-5">Servizi Avanzati di Risparmio e Assistenza</h3>
+            <!--Sottotitolo con grandezza 5 e margine sottostante (margin-bottom)-->
             <div> <!--scatola vuota per gestire entrambi i pulsanti in una singola riga-->
                 <a class="btn btn-primary btn-l m-2" href="./pages/registrati.html">Registrati</a>
                 <a class="btn btn-primary btn-l m-2" href="./pages/accedi.html">Accedi</a>
@@ -43,6 +46,15 @@
         Gli script qui sopra permettono di modificare degli elementi della pagina attraverso delle classi CSS già fatte e richiamabili in HTML
     -->
 </body>
+
+<script> //inizializza valori
+    localStorage.setItem('nCarte', 1); //contatore delle carte
+    localStorage.setItem('nconti', 0); //contatore per ogni conto
+    localStorage.setItem('contoSelezionato', 0); //conto attualmente in uso
+
+    localStorage.setItem('azioniDisponibili', 100) //azioni disponibili 
+    localStorage.setItem('azioniComprate', 0) // azioni comprate
+</script>
 
 </html>
 <!--commenti programma

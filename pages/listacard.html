@@ -27,7 +27,7 @@
 
 <body onload="aggiorna()"> <!--ogni volta che vioene caricata la pagina richiama la funzione aggiorna-->
     <!--Header-->
-    <header class="p-2 border-bottom contaner-fluid bg-danger">
+    <header class="p-2 border-bottom contaner-fluid bg-primary">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
@@ -113,7 +113,6 @@
     </table>
 
     <script>
-        let counterCarte = 2; //contatore delle carte
         function aggiorna() {
             counterCarte = parseInt(localStorage.getItem('nCarte'))
             for (i = 2; i <= counterCarte; i++) {
@@ -133,6 +132,7 @@
                 '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
                 '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">elimina carta</a></td>' +
                 '</tr>';
+            
             localStorage.setItem('nCarte', counterCarte)
         }
 

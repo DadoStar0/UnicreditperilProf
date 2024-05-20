@@ -31,9 +31,9 @@
 
 </head>
 
-<body>
+<body onload="aggiorna()">
     <!--Header-->
-    <header class="p-2 border-bottom contaner bg-danger">
+    <header class="p-2 border-bottom contaner bg-primary">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
                 <!--Logo app-->
@@ -143,15 +143,20 @@
     </main>
 
     <script>
-        let azioniComprate
-        let azioniDisponibili
-        let costoAzione
+        
+        let azioniComprate = 0
+        let azioniDisponibili = 0
+        let costoAzione = 45
 
         //inizializza valori
         function aggiorna() {
-            azioniComprate = 0
-            azioniDisponibili = 100
-            costoAzione = 7
+            azioniComprate = parseInt(localStorage.getItem('azioniComprate'))
+            azioniDisponibili = parseInt(localStorage.getItem('azioniDisponibili'))
+            costoAzione = parseInt(localStorage.getItem('costoAzione'))
+            document.getElementById('azioniDisponibiliId').innerHTML = azioniDisponibili
+            document.getElementById('azioniComprateId').innerHTML = azioniComprate
+            document.getElementById('costoAzioneId').innerHTML = costoAzione
+
         }
         
         //funzione compra azione
