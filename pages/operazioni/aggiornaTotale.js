@@ -1,4 +1,4 @@
-function aggiornaTotale() {
+function aggiornaTotale() { 
     let importo = parseFloat(document.getElementById('importo').value)
     let conto = localStorage.getItem('contoSelezionato') //prendi conto attualmente selezionato
     let saldo = parseFloat(localStorage.getItem('conto' + conto)) //prendi saldo presente sul conto
