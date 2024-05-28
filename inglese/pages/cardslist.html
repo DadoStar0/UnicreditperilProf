@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<!--Per maggiori informazioni vedi index.html, non mi va di commentare tutto :)-->
+
+<head>
+    <!--Metadati-->
+    <meta charset="UTF-8">
+    <meta name='description' content='Sito Web per StartupYourLife'>
+    <meta name='language' content='IT'>
+    <meta name='author' content='Davide Simone Angelo Fucci Mattia Malcangi Antonio Di Bari Antonio Balducci'>
+    <!--Autori della pagina-->
+    <!--Titolo pagina-->
+    <title>S.A.R.A.</title>
+    <!---->
+    <link rel="icon" type="image/x-icon" href="./immagini/logounicredit.png">
+    <!--Icone di bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!--Stile pagina-->
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+
+</head>
+
+<body onload="aggiorna()"> <!--ogni volta che vioene caricata la pagina richiama la funzione aggiorna-->
+    <!--Header-->
+    <header class="p-2 border-bottom contaner-fluid bg-primary">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between">
+                <!--Logo app-->
+                <a href="../indexEn.html"
+                    class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <!--Icona in alto a sinistra che riporta alla dashboard-->
+                    <i class="bi bi-door-open"></i>
+
+                </a>
+                <!--Titolo-->
+                <h4 class="mb-0">S.A.R.A.</h4>
+                <a href="profileinfo.html" class="d-block link-body-emphasis text-decoration-none"
+                    aria-expanded="false">
+                    <i class="bi bi-person-circle" style="font-size:1.5em"></i> <!--iCONA DEL PROFILO-->
+                </a>
+
+            </div>
+        </div>
+    </header>
+    <img src="./immagini/unicreditbackground.png" class="rounded mx-auto d-block" width="150px">
+
+
+
+    <!--Barra di navigazione-->
+    <nav class="navbar navbar-expand-md bg-body-tertiary rounded">
+        <!--elemento nav di html che gestisce le navbar-->
+        <div class="container-fluid">
+            <!--Container fluido grande quanto tutta la pagina-->
+            <div class="navbar-collapse justify-content-center">
+                <!--UL e Li sono elementi di html per i menù a tendina, vengono gestiti da Bootstrap per le classi-->
+                <ul class="navbar-nav">
+                    <!--Gestione navbar attraverso classi nav e item-->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dashboard.html">Homepage</a> <!--Link alle pagine-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="operations.html">Banking Operations</a> <!--Link alle pagine-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="account.html">Bank Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="stats.html">Stats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="appmobile.html">Download App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="card.html">SaraCard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cardslist.html">Your cards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="help.html">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">Promotions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shares.html">Shares</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h3 align="center">Your Cards:</h3>
+    <table border="1" class="table" id="tabellaCarte">
+        <tr border="1" id="Carta1">
+            <td border="1">
+                <h3 id="nCarta">Card 1</h3>
+            </td>
+            <td align="center" border="1"><img src="./immagini/Carta.png" width="30%"></img></td>
+            <td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">Delete card</a></td>
+        </tr>
+    </table>
+
+    <script>
+        function aggiorna() {
+            counterCarte = parseInt(localStorage.getItem('nCarte'))
+            for (i = 2; i <= counterCarte; i++) {
+                let tabella = document.getElementById('tabellaCarte');
+                tabella.innerHTML += '<tr border="1" id="Carta' + i + '">' + //aggiungi elemento nuova carta html
+                    '<td border="1"><h3 id="nCarta">Card ' + i + '</h3></td>' +
+                    '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
+                    '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">Delete card</a></td>' +
+                    '</tr>';
+            }
+        }
+        function aggiungiCarta() {
+            counterCarte++; //incrementa contatore
+            let tabella = document.getElementById('tabellaCarte');
+            tabella.innerHTML += '<tr border="1" id="Carta' + counterCarte + '">' + //aggiungi elemento nuova carta html += significa aggiungi stesso
+                '<td border="1"><h3 id="nCarta">Card ' + counterCarte + '</h3></td>' +
+                '<td align="center" border="1"><img src="./immagini/Carta.png" width="30%" ></img></td>' +
+                '<td border="1" align="center"><a class="btn btn-danger btn-l m-2" onclick="rimuoviCarta()" href="#">Delete Card</a></td>' +
+                '</tr>';
+            
+            localStorage.setItem('nCarte', counterCarte)
+        }
+
+        function rimuoviCarta() {
+            let carta = document.getElementById('Carta' + counterCarte); //prendi elemento carta da HTML
+            counterCarte--; //decrementa contatore
+            carta.remove(); //elimina carta da HTML
+            localStorage.setItem('nCarte', counterCarte)
+        }
+    </script>
+
+
+    <a class="btn btn-success btn-l m-2" align="center" href="#" onclick="aggiungiCarta()">Add card</a>
+    <!--Bootstrap Script-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

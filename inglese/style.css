@@ -1,0 +1,11 @@
+/*
+file per personalizzazioni future 
+*/
+p{
+    text-align:justify;
+}
+
+.articolo{
+    height: 50%;
+    font-size:1.7vw; /*Cambia in base alla grandezza dello schermo*/
+}

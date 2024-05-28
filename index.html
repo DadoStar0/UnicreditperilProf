@@ -18,7 +18,16 @@
 
 <body> <!--Contenuto della pagina-->
     <!--Il div è una scatola vuota che può contenere elementi-->
-    <div class="d-flex align-items-center justify-content-evenly" style="min-height: 100vh">
+    <div class="dropdown m-5">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Seleziona Lingua
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="./index.html">Italiano</a></li>
+          <li><a class="dropdown-item" href="./inglese/indexEn.html">Inglese</a></li>
+        </ul>
+      </div>
+    <div class="d-flex align-items-center justify-content-evenly" style="min-height: 80vh">
         <!--Display flex gestisce lo spazio nella pagina
             Allinea tutti gli items al centro della pagina e li giustifica al centro
             Min height gestisce la grandezza del div sempre al 100% dello schermo-->
@@ -27,12 +36,13 @@
                 Flex in colonna per gestire ogni elemento con la sua singola riga
             -->
             <h1 class="display-1 mb-1">S.A.R.A.</h1> <!--Titolo con grandezza 1 e margine sottostante (margin-bottom)-->
-            <h3 class="display-5 mb-5">Servizi Avanzati di Risparmio e Assistenza</h3>
+            <h3 class="display-5 mb-5" id="sottotitolo">Servizi Avanzati di Risparmio e Assistenza</h3>
             <!--Sottotitolo con grandezza 5 e margine sottostante (margin-bottom)-->
             <div> <!--scatola vuota per gestire entrambi i pulsanti in una singola riga-->
-                <a class="btn btn-primary btn-l m-2" href="./pages/registrati.html">Registrati</a>
-                <a class="btn btn-primary btn-l m-2" href="./pages/accedi.html">Accedi</a>
+                <a class="btn btn-primary btn-l m-2" id="registrati" href="./pages/registrati.html">Registrati</a>
+                <a class="btn btn-primary btn-l m-2"id="accedi " href="./pages/accedi.html">Accedi</a>
             </div>
+            
         </div>
     </div>
 
@@ -48,6 +58,7 @@
 </body>
 
 <script> //inizializza valori
+
     localStorage.clear()
     localStorage.setItem('nCarte', 1); //contatore delle carte
     localStorage.setItem('nconti', 0); //contatore per ogni conto
